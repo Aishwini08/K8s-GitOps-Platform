@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Aishwini08/K8s-GitOps-Platform.git
-    targetRevision: master
+    targetRevision: main
     path: helm-charts/python-service
     helm:
       valueFiles:
