@@ -8,7 +8,8 @@ module "eks" {
   vpc_id     = var.vpc_id
   subnet_ids = var.private_subnets
 
-  cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access       = true
+  cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]  # TODO: restrict to your IP e.g. ["<your-ip>/32"]
   cluster_endpoint_private_access = true
 
   # Grant cluster admin access to the IAM identity running Terraform
