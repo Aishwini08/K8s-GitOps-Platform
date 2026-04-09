@@ -1,0 +1,40 @@
+---
+- name: Update all packages
+  ansible.builtin.yum:
+    name: "*"
+    state: latest
+
+- name: Disable root SSH login
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+  notify: restart sshd
+
+- name: Disable password authentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: restart sshd
+
+- name: Set permissions on /etc/passwd
+  ansible.builtin.file:
+    path: /etc/passwd
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Set permissions on /etc/shadow
+  ansible.builtin.file:
+    path: /etc/shadow
+    mode: "0000"
+    owner: root
+    group: root
+
+- name: Ensure iptables is installed
+  ansible.builtin.yum:
+    name: iptables
+    state: present

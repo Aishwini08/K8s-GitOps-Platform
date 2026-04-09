@@ -1,0 +1,3 @@
+---
+slack_webhook_url: "<your-slack-webhook-url>"
+slack_channel: "#all-k8s-alerts"

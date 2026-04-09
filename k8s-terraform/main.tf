@@ -7,4 +7,5 @@ module "eks" {
 
   vpc_id          = module.vpc.vpc_id
   private_subnets = module.vpc.private_subnets
+  bastion_sg_id   = module.vpc.bastion_sg_id
 }

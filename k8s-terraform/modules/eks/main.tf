@@ -21,6 +21,16 @@ module "eks" {
       desired_size   = 2
       min_size       = 2
       max_size       = 4
+      key_name       = "my-eks-key"
     }
   }
+}
+
+resource "aws_security_group_rule" "allow_bastion_ssh" {
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  source_security_group_id = var.bastion_sg_id
+  security_group_id        = module.eks.node_security_group_id
 }

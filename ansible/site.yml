@@ -1,0 +1,11 @@
+---
+- name: Configure EKS Worker Nodes
+  hosts: eks_workers
+  become: true
+  remote_user: ec2-user
+
+  roles:
+    - os-hardening
+    - containerd
+    - node-exporter
+    - alertmanager

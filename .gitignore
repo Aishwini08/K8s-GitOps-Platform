@@ -10,3 +10,7 @@ terraform.tfstate.lock.info
 
 # OS
 .DS_Store
+
+# Secrets
+*.pem
+ansible/vars.yml

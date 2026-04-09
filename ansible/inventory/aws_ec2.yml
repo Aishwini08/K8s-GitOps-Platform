@@ -1,0 +1,10 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - ap-south-1
+filters:
+  tag:kubernetes.io/cluster/my-eks-cluster: owned
+  instance-state-name: running
+hostnames:
+  - private-ip-address
+compose:
+  ansible_host: private_ip_address
