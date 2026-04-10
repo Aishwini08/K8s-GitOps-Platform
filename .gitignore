@@ -10,7 +10,13 @@ terraform.tfstate.lock.info
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Secrets
 *.pem
 ansible/vars.yml
+ansible/awscliv2.zip
+
+# AWS credentials
+*.key
+cUsersAISHWINIPicturesk8s-gitops-platformk8s-terraformmy-eks-key.pem

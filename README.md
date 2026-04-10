@@ -247,6 +247,12 @@ kubectl delete svc --all
 terraform destroy
 ```
 
+## Demo Video
+
+[Watch Demo Video](https://www.youtube.com/watch?v=your-demo-video-link)
+
+> Replace the link above with your actual demo video URL before submission.
+
 ## Teardown
 
 ```bash

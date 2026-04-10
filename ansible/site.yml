@@ -6,6 +6,8 @@
 
   roles:
     - os-hardening
+    - node-setup
     - containerd
     - node-exporter
+    - prometheus-config
     - alertmanager

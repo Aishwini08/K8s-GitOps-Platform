@@ -1,0 +1,21 @@
+---
+- name: Create prometheus config directory
+  ansible.builtin.file:
+    path: /etc/prometheus
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+
+- name: Deploy prometheus scrape config
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+    mode: "0644"
+  notify: reload prometheus
+
+- name: Ensure prometheus service is running
+  ansible.builtin.systemd:
+    name: prometheus
+    state: started
+    enabled: true

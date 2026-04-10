@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: python-app
+  name: python-app-staging
   namespace: argocd
 spec:
   project: default
@@ -12,9 +12,35 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-app-production
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Aishwini08/K8s-GitOps-Platform.git
+    targetRevision: main
+    path: helm-charts/python-service
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
   syncPolicy:
     automated:
       prune: true

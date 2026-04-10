@@ -154,3 +154,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+configmap:
+  APP_ENV: "production"
+  LOG_LEVEL: "info"
+
+secret:
+  apiKey: "Y2hhbmdlbWU="
