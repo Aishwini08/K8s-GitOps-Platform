@@ -7,7 +7,7 @@ scrape_configs:
     static_configs:
       - targets:
           {% for host in groups['eks_workers'] %}
-          - "{{ hostvars[host]['ansible_host'] }}:9100"
+          - "{{ host }}:9100"
           {% endfor %}
 
   - job_name: "kubernetes-nodes"

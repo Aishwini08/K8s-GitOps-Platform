@@ -135,6 +135,22 @@ resource "aws_security_group" "bastion_sg" {
   }
 }
 
+resource "tls_private_key" "eks_key" {
+  algorithm = "RSA"
+  rsa_bits  = 2048
+}
+
+resource "aws_key_pair" "eks_key" {
+  key_name   = "my-eks-key"
+  public_key = tls_private_key.eks_key.public_key_openssh
+}
+
+resource "local_file" "eks_key_pem" {
+  content         = tls_private_key.eks_key.private_key_pem
+  filename        = "${path.root}/my-eks-key.pem"
+  file_permission = "0400"
+}
+
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]

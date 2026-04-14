@@ -36,7 +36,6 @@
 - name: Install required packages
   ansible.builtin.yum:
     name:
-      - curl
       - wget
       - socat
       - conntrack
