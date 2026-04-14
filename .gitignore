@@ -14,9 +14,7 @@ Thumbs.db
 
 # Secrets
 *.pem
+*.key
 ansible/vars.yml
 ansible/awscliv2.zip
-
-# AWS credentials
-*.key
-cUsersAISHWINIPicturesk8s-gitops-platformk8s-terraformmy-eks-key.pem
+k8s-terraform/my-eks-key.pem

@@ -83,7 +83,7 @@ k8s-gitops-platform/
 │   │   ├── os-hardening/     # SSH hardening, file permissions
 │   │   ├── containerd/       # Container runtime setup
 │   │   ├── node-exporter/    # Prometheus Node Exporter
-│   │   └── alertmanager/     # AlertManager configuration
+│   │   └── alertmanager-config/  # AlertManager configuration
 │   └── site.yml              # Master playbook
 ├── monitoring/
 │   └── alertmanager-values.yaml  # Prometheus stack Helm values
@@ -140,6 +140,8 @@ Access ArgoCD UI at https://localhost:8080
 
 ### 4. Deploy Microservices via ArgoCD
 
+> **Note:** ArgoCD watches the separate **[k8s-gitops-config](https://github.com/Aishwini08/k8s-gitops-config)** repository for Helm chart changes. The ArgoCD Application manifests in this repo point to that dedicated config repo.
+
 ```bash
 kubectl apply -f argocd/apps/
 kubectl get applications -n argocd
@@ -157,6 +159,8 @@ This configures:
 - containerd runtime
 - Node Exporter (port 9100)
 - AlertManager with Slack notifications
+
+> **Note:** Ansible playbooks live in the separate **[k8s-ansible-config](https://github.com/Aishwini08/k8s-ansible-config)** repository.
 
 ### 6. Install Prometheus + Grafana
 
@@ -251,7 +255,7 @@ terraform destroy
 
 [Watch Demo Video](https://www.youtube.com/watch?v=your-demo-video-link)
 
-> Replace the link above with your actual demo video URL before submission.
+> **TODO:** Replace the link above with your actual demo video URL before submission.
 
 ## Teardown
 

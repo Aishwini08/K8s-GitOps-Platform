@@ -44,7 +44,7 @@ additionalPrometheusRulesMap:
       - name: pod-alerts
         rules:
           - alert: PodCrashLooping
-            expr: rate(kube_pod_container_status_restarts_total[5m]) * 60 > 0
+            expr: increase(kube_pod_container_status_restarts_total[5m]) > 3
             for: 5m
             labels:
               severity: critical

@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Aishwini08/K8s-GitOps-Platform.git
+    repoURL: https://github.com/Aishwini08/k8s-gitops-config.git
     targetRevision: main
     path: helm-charts/python-service
     helm:
@@ -31,7 +31,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Aishwini08/K8s-GitOps-Platform.git
+    repoURL: https://github.com/Aishwini08/k8s-gitops-config.git
     targetRevision: main
     path: helm-charts/python-service
     helm:

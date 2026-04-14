@@ -10,4 +10,4 @@
     - containerd
     - node-exporter
     - prometheus-config
-    - alertmanager
+    - alertmanager-config
